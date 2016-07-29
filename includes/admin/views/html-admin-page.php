@@ -18,9 +18,6 @@ if ( 'yes' == $this->get_option( 'enabled' ) ) {
 	if ( ! $this->using_supported_currency() && ! class_exists( 'woocommerce_wpml' ) ) {
 		include dirname( __FILE__ ) . '/html-notice-currency-not-supported.php';
 	}
-	if ( '' === $this->get_email() ) {
-		include dirname( __FILE__ ) . '/html-notice-email-missing.php';
-	}
 	if ( '' === $this->client_id ) {
 		include dirname( __FILE__ ) . '/html-notice-client-id-missing.php';
 	}

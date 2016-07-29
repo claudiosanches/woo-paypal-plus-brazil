@@ -8,11 +8,15 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Receba pagamentos por cartão de crédito utilizando o PayPal Plus
+Receba pagamentos por cartão de crédito utilizando o PayPal Plus.
 
 == Description ==
 
 A sua experiência de checkout com a segurança do PayPal. O pagamento é feito diretamente em seu site, sem redirecionar seus clientes, e processado com toda a tecnologia e segurança do PayPal. Mais segurança, maior conversão de vendas. Veja mais [aqui](https://www.paypal.com/br/webapps/mpp/paypal-payments-pro).
+
+= Atenção =
+
+Para utilização do PayPal Plus você precisa de uma autorização especial. Acesse a [landing page](https://www.paypal.com/br/webapps/mpp/paypal-payments-pro) para obter mais informações.
 
 = Compatibilidade =
 

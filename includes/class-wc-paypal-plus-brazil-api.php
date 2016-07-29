@@ -172,7 +172,7 @@ class WC_PayPal_Plus_Brazil_API {
 			'payer'                 => array(
 				'payment_method' => 'paypal',
 			),
-			'experience_profile_id' => 'XP-EPBM-FB9K-CLLV-C86Q',
+			'experience_profile_id' => $this->get_experience_profile_id(),
 			'transactions'          => array(
 				array(
 					'amount'          => array(
@@ -309,6 +309,40 @@ class WC_PayPal_Plus_Brazil_API {
 	}
 
 	/**
+	 * Get Experience Profile ID or create one if don't have.
+	 *
+	 * @return mixed
+	 */
+	public function get_experience_profile_id() {
+		$experience_profile_id = $this->gateway->experience_profile_id;
+		if ( ! $experience_profile_id ) {
+			$hash     = hash( 'md5', home_url( '/' ) . time() );
+			$response = $this->create_web_experience( array( 'name' => $hash ) );
+			if ( $response ) {
+				$this->update_experience_profile_id( $response['id'] );
+
+				return $response['id'];
+			}
+		}
+
+		return $experience_profile_id;
+	}
+
+	/**
+	 * Update profile id in options.
+	 *
+	 * @param $profile_id
+	 *
+	 * @return bool
+	 */
+	public function update_experience_profile_id( $profile_id ) {
+		$options                          = get_option( $this->gateway->get_option_key() );
+		$options['experience_profile_id'] = $profile_id;
+
+		return update_option( $this->gateway->get_option_key(), apply_filters( 'woocommerce_settings_api_sanitized_fields_' . $this->gateway->id, $options ) );
+	}
+
+	/**
 	 * Create Web Profile Experience
 	 *
 	 * @param array $args Arguments to create Web Experience Profile.
@@ -319,17 +353,16 @@ class WC_PayPal_Plus_Brazil_API {
 		$default_args = array(
 			'name'         => get_bloginfo( 'name' ),
 			'presentation' => array(
-				'brand_name' => get_bloginfo( 'name' ),
-				'locale'     => get_locale(),
+				'brand_name'  => get_bloginfo( 'name' ),
+				'locale_code' => 'BR',
 			),
 			'input_fields' => array(
-				'allow_note'       => false,
-				'no_shipping'      => false,
-				'address_override' => true,
+				'no_shipping'      => 0,
+				'address_override' => 1,
 			),
 		);
 		$data         = wp_parse_args( $args, $default_args );
-		$url          = $this->get_payment_experience_url();
+		$url          = $this->get_payment_experience_url() . '/web-profiles/';
 		$response     = $this->do_request_bearer( $url, 'POST', $data );
 
 		$this->gateway->log( 'Requesting to ' . $url . ': ' . print_r( $data, true ) );
