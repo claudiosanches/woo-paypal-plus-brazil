@@ -19,7 +19,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 		$this->id                 = 'paypal-plus-brazil';
 		$this->icon               = apply_filters( 'woocommerce_paypal_plus_brazil_icon', plugins_url( 'assets/images/paypal-plus.png', plugin_dir_path( __FILE__ ) ) );
 		$this->method_title       = __( 'PayPal Plus Brazil', 'paypal-plus-brazil-for-woocommerce' );
-		$this->method_description = __( 'Accept payments by credit card, bank debit or banking ticket using PayPal Plus.', 'paypal-plus-brazil-for-woocommerce' );
+		$this->method_description = __( 'Accept payments by credit card using PayPal Plus.', 'paypal-plus-brazil-for-woocommerce' );
 		$this->order_button_text  = __( 'Confirm payment', 'paypal-plus-brazil-for-woocommerce' );
 		$this->has_fields         = true;
 
