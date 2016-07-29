@@ -41,7 +41,7 @@ jQuery( function ( $ ) {
 				ppb_checkout.ppp = PAYPAL.apps.PPP( {
 					approvalUrl: approval_url,
 					placeholder: 'ppplus',
-					mode: 'sandbox',
+					mode: wc_ppb_params.mode,
 					payerFirstName: info_json.billing_first_name,
 					payerLastName: info_json.billing_last_name,
 					payerEmail: info_json.billing_email,
@@ -101,7 +101,6 @@ jQuery( function ( $ ) {
 					ppb_checkout.finish_submit_form();
 				} else if ( data.action === 'onError' ) {
 					ppb_checkout.resize_ppplus();
-					console.log( data.cause );
 					if ( data.cause === '"NO_VALID_FUNDING_SOURCE_OR_RISK_REFUSED"' || data.cause === '"RISK_N_DECLINE"' || data.cause === '"TRY_ANOTHER_CARD"' || data.cause === '"NO_VALID_FUNDING_INSTRUMENT"' ) {
 						ppb_checkout.finish_submit_form();
 					} else if ( data.cause === '"PPPLUS_NOT_AVAILABLE_FOR_MERCHANT"' ) {
