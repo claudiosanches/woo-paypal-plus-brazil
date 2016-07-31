@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <h3><?php echo esc_html( $this->method_title ); ?></h3>
 
 <div class="error inline">
-	<p><?php _e( 'To use PayPal Plus you need to have an authorized account to this. Check this before using.', 'paypal-plus-brazil-for-woocommerce' ); ?></p>
+	<p><?php _e( 'To use PayPal Plus you need to have an authorized account to this. Check this before using.', 'woo-paypal-plus-brazil' ); ?></p>
 </div>
 
 <?php

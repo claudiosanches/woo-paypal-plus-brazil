@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: PayPal Plus Brazil for WooCommerce
- * Plugin URI: https://github.com/eliasjnior/paypal-plus-brazil-for-woocommerce/
+ * Plugin Name: Woo PayPal Plus Brazil
+ * Plugin URI: https://github.com/eliasjnior/woo-paypal-plus-brazil/
  * Description: Easily enable PayPal Plus Checkout (Brazil)
  * Version: 1.0.0
  * Author: Elias Júnior
@@ -9,7 +9,7 @@
  * Requires at least: 4.4
  * Tested up to: 4.5
  *
- * Text Domain: paypal-plus-brazil-for-woocommerce
+ * Text Domain: woo-paypal-plus-brazil
  * Domain Path: /languages/
  */
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WC_PayPay_Plus_Brazil' ) ) {
 		 * Load the plugin text domain for translation.
 		 */
 		public function load_plugin_textdomain() {
-			load_plugin_textdomain( 'paypal-plus-brazil-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( 'woo-paypal-plus-brazil', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		}
 
 		/**
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WC_PayPay_Plus_Brazil' ) ) {
 		 */
 		public function plugin_action_links( $links ) {
 			$plugin_links   = array();
-			$plugin_links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=checkout&section=paypal-plus-brazil' ) ) . '">' . __( 'Settings', 'paypal-plus-brazil-for-woocommerce' ) . '</a>';
+			$plugin_links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=checkout&section=paypal-plus-brazil' ) ) . '">' . __( 'Settings', 'woo-paypal-plus-brazil' ) . '</a>';
 
 			return array_merge( $plugin_links, $links );
 		}

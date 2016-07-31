@@ -17,10 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<input type="hidden" id="paypal-plus-brazil-payerid" name="paypal-plus-brazil-payerid" value="">
 			<div id="ppplus"></div>
 		<?php else: ?>
-			<p><?php _e( 'Some error trying to generate payment field. Please refresh the page.', 'paypal-plus-brazil-for-woocommerce' ); ?></p>
+			<p><?php _e( 'Some error trying to generate payment field. Please refresh the page.', 'woo-paypal-plus-brazil' ); ?></p>
 		<?php endif; ?>
 	<?php else: ?>
-		<p><?php _e( 'Please, fill all the required fields before continue payment.', 'paypal-plus-brazil-for-woocommerce' ); ?></p>
-		<p><a id="update_checkout"><?php _e( 'Click here', 'paypal-plus-brazil-for-woocommerce' ); ?></a> <?php _e( 'in case you already filled everything.', 'paypal-plus-brazil-for-woocommerce' ); ?></p>
+		<p><?php _e( 'Please, fill all the required fields before continue payment.', 'woo-paypal-plus-brazil' ); ?></p>
+		<p><a id="update_checkout"><?php _e( 'Click here', 'woo-paypal-plus-brazil' ); ?></a> <?php _e( 'in case you already filled everything.', 'woo-paypal-plus-brazil' ); ?></p>
 	<?php endif; ?>
 </fieldset>

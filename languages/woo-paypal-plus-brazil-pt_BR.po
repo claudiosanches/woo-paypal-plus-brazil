@@ -2,11 +2,11 @@
 # This file is distributed under the same license as the PayPal Plus Brazil for WooCommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: PayPal Plus Brazil for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/paypal-plus-"
-"brazil-for-woocommerce\n"
-"POT-Creation-Date: 2016-07-29 18:56-0300\n"
-"PO-Revision-Date: 2016-07-29 19:04-0300\n"
+"Project-Id-Version: Woo Paypal Plus Brazil 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-paypal-plus-"
+"brazil\n"
+"POT-Creation-Date: 2016-07-31 03:19-0300\n"
+"PO-Revision-Date: 2016-07-31 03:19-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -24,7 +24,9 @@ msgstr ""
 "Ajuste-nos a manter o plugin %s gratuito fazendo uma doação ou avaliar %s no "
 "WordPress.org. Obrigado!"
 
-#. Plugin Name of the plugin/theme
+#: includes/admin/views/html-admin-help-message.php:10
+#: includes/admin/views/html-notice-missing-ecfb.php:16
+#: includes/admin/views/html-notice-missing-woocommerce.php:16
 msgid "PayPal Plus Brazil for WooCommerce"
 msgstr "PayPal Plus Brasil para WooCommerce"
 
@@ -103,11 +105,11 @@ msgstr "Aceitar pagamentos por cartão de crédito usando PayPal Plus."
 msgid "Confirm payment"
 msgstr "Confirmar pagamento"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:97
+#: includes/class-wc-paypal-plus-brazil-gateway.php:98
 msgid "Loading PayPal..."
 msgstr "Carregando PayPal..."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:98
+#: includes/class-wc-paypal-plus-brazil-gateway.php:99
 msgid ""
 "PayPal Plus is not active for this PayPal account. Please contact us and try "
 "another payment method."
@@ -115,17 +117,17 @@ msgstr ""
 "PayPal Plus não está ativo para essa conta PayPal. Por favor entre em "
 "contato conosco e tente outro método de pagamento."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:99
+#: includes/class-wc-paypal-plus-brazil-gateway.php:100
 msgid "Please fill all required fields."
 msgstr "Preencha todos os campos obrigatórios."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:100
+#: includes/class-wc-paypal-plus-brazil-gateway.php:101
 msgid "Unknown error. Please contact us and try another payment method."
 msgstr ""
 "Erro desconhecido. Por favor entre em contato conosco e tente outro método "
 "de pagamento."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:101
+#: includes/class-wc-paypal-plus-brazil-gateway.php:102
 msgid ""
 "Unknown error in PayPal response. Please contact us and try another payment "
 "method."
@@ -133,75 +135,75 @@ msgstr ""
 "Erro desconhecido na resposta do PayPal. Por favor entre em contato conosco "
 "e tente outro método de pagamento."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:115
+#: includes/class-wc-paypal-plus-brazil-gateway.php:116
 msgid "System Status &gt; Logs"
 msgstr "Status do Sistema &gt; Logs"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:127
+#: includes/class-wc-paypal-plus-brazil-gateway.php:128
 msgid "Enable/Disable"
 msgstr "Ativar/Desativar"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:129
+#: includes/class-wc-paypal-plus-brazil-gateway.php:130
 msgid "Enable PayPal Plus Brazil"
 msgstr "Ativar PayPal Plus Brasil"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:133
+#: includes/class-wc-paypal-plus-brazil-gateway.php:134
 msgid "Title"
 msgstr "Título"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:135
+#: includes/class-wc-paypal-plus-brazil-gateway.php:136
 msgid "This controls the title which the user sees during checkout."
 msgstr "Isso controla o título que o usuário verá durante o checkout."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:137
+#: includes/class-wc-paypal-plus-brazil-gateway.php:138
 msgid "PayPal Plus"
 msgstr "PayPal Plus"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:140
+#: includes/class-wc-paypal-plus-brazil-gateway.php:141
 msgid "Description"
 msgstr "Descrição"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:142
+#: includes/class-wc-paypal-plus-brazil-gateway.php:143
 msgid "This controls the description which the user sees during checkout."
 msgstr "Isso controla a descrição que o usuário verá durante o checkout."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:143
+#: includes/class-wc-paypal-plus-brazil-gateway.php:144
 msgid "Pay via PayPal Plus"
 msgstr "Pagar por PayPal Plus"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:146
+#: includes/class-wc-paypal-plus-brazil-gateway.php:147
 msgid "PayPal Plus Sandbox"
 msgstr "Sandbox PayPal Plus"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:148
+#: includes/class-wc-paypal-plus-brazil-gateway.php:149
 msgid "Enable PayPal Plus Sandbox"
 msgstr "Ativar Sandbox PayPal Plus"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:151
+#: includes/class-wc-paypal-plus-brazil-gateway.php:152
 msgid "PayPal Plus Sandbox can be used to test the payments."
 msgstr "Sandbox PayPal Plus pode ser usado para testar pagamentos."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:154
+#: includes/class-wc-paypal-plus-brazil-gateway.php:155
 msgid "PayPal Plus Client ID"
 msgstr "PayPal Plus ID do Cliente"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:156
+#: includes/class-wc-paypal-plus-brazil-gateway.php:157
 msgid "Please enter your PayPal Plus client ID."
 msgstr "Informe o cliente ID do PayPal Plus"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:160
+#: includes/class-wc-paypal-plus-brazil-gateway.php:161
 msgid "PayPal Plus Client Secret"
 msgstr "PayPal Plus Cliente Secreto"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:162
+#: includes/class-wc-paypal-plus-brazil-gateway.php:163
 msgid "Please enter your PayPal Plus Client Secret."
 msgstr "Informe o cliente secreto do PayPal Plus"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:166
+#: includes/class-wc-paypal-plus-brazil-gateway.php:167
 msgid "PayPal Plus Experience Profile ID"
 msgstr "PayPal Plus ID Perfil de Experiência"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:168
+#: includes/class-wc-paypal-plus-brazil-gateway.php:169
 msgid ""
 "Please enter your PayPal Plus Experience Profile ID. Leave empty if you "
 "don't have, the API will get one."
@@ -209,58 +211,54 @@ msgstr ""
 "Informe o ID Perfil de Experiência do PayPal Plus. Deixe em branco caso você "
 "não tenha, pois a API irá obter uma."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:172
+#: includes/class-wc-paypal-plus-brazil-gateway.php:173
 msgid "Design"
 msgstr "Design"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:177
+#: includes/class-wc-paypal-plus-brazil-gateway.php:178
 msgid "Loading background color"
 msgstr "Cor de fundo do carregamento"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:179
+#: includes/class-wc-paypal-plus-brazil-gateway.php:180
 msgid "Please enter hex color to loading background. Eg.: #CCCCCC"
 msgstr ""
 "Informe o valor hexadecimal da cor de fundo do carregamento. Ex.: #CCCCCC"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:183
+#: includes/class-wc-paypal-plus-brazil-gateway.php:184
 msgid "Loading background opacity"
 msgstr "Opacidade da cor de fundo do carregamento"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:185
+#: includes/class-wc-paypal-plus-brazil-gateway.php:186
 msgid "Please enter a percentage value to background opacity. Eg.: 50%."
 msgstr "Informe a porcentagem da cor de fundo do carregamento. Ex.: 50%."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:189
+#: includes/class-wc-paypal-plus-brazil-gateway.php:190
 msgid "Gateway Testing"
 msgstr "Testes do Gateway"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:194
+#: includes/class-wc-paypal-plus-brazil-gateway.php:195
 msgid "Debug Log"
 msgstr "Log de Debug"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:196
+#: includes/class-wc-paypal-plus-brazil-gateway.php:197
 msgid "Enable logging"
 msgstr "Ativar log"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:198
+#: includes/class-wc-paypal-plus-brazil-gateway.php:199
 msgid "Log PayPal Plus Brazil events, such as API requests, inside %s"
 msgstr "Registra eventos do PayPal Plus Brasil, como requisições da API, em %s"
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:268
+#: includes/class-wc-paypal-plus-brazil-gateway.php:270
 msgid "Missing PayPal payment data."
 msgstr "Faltando informações de pagamento do PayPal."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:278
+#: includes/class-wc-paypal-plus-brazil-gateway.php:280
 msgid "Payment received and confirmed by PayPal."
 msgstr "Pagamento recebido e confirmado pelo PayPal."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:280
+#: includes/class-wc-paypal-plus-brazil-gateway.php:283
 msgid "Could not execute the payment."
 msgstr "Não foi possível executar o pagamento."
-
-#: paypal-plus-brazil-for-woocommerce.php:105
-msgid "Settings"
-msgstr "Configurações"
 
 #: templates/checkout-form.php:20
 msgid "Some error trying to generate payment field. Please refresh the page."
@@ -281,8 +279,16 @@ msgstr "Clique aqui"
 msgid "in case you already filled everything."
 msgstr "caso você já tenha preenchido tudo."
 
+#: woo-paypal-plus-brazil.php:105
+msgid "Settings"
+msgstr "Configurações"
+
+#. Plugin Name of the plugin/theme
+msgid "Woo PayPal Plus Brazil"
+msgstr "Woo PayPal Plus Brasil"
+
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/eliasjnior/paypal-plus-brazil-for-woocommerce/"
+msgid "https://github.com/eliasjnior/woo-paypal-plus-brazil/"
 msgstr ""
 
 #. Description of the plugin/theme

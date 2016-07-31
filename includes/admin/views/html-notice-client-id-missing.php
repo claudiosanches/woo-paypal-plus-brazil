@@ -8,6 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="error inline">
-	<p><strong><?php _e( 'PayPal Plus Brazil Disabled', 'paypal-plus-brazil-for-woocommerce' ); ?></strong>: <?php _e( 'You should inform your client ID.', 'paypal-plus-brazil-for-woocommerce' ); ?>
+	<p><strong><?php _e( 'PayPal Plus Brazil Disabled', 'woo-paypal-plus-brazil' ); ?></strong>: <?php _e( 'You should inform your client ID.', 'woo-paypal-plus-brazil' ); ?>
 	</p>
 </div>

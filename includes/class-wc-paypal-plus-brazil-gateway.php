@@ -18,9 +18,9 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	public function __construct() {
 		$this->id                 = 'paypal-plus-brazil';
 		$this->icon               = apply_filters( 'woocommerce_paypal_plus_brazil_icon', plugins_url( 'assets/images/paypal-plus.png', plugin_dir_path( __FILE__ ) ) );
-		$this->method_title       = __( 'PayPal Plus Brazil', 'paypal-plus-brazil-for-woocommerce' );
-		$this->method_description = __( 'Accept payments by credit card using PayPal Plus.', 'paypal-plus-brazil-for-woocommerce' );
-		$this->order_button_text  = __( 'Confirm payment', 'paypal-plus-brazil-for-woocommerce' );
+		$this->method_title       = __( 'PayPal Plus Brazil', 'woo-paypal-plus-brazil' );
+		$this->method_description = __( 'Accept payments by credit card using PayPal Plus.', 'woo-paypal-plus-brazil' );
+		$this->order_button_text  = __( 'Confirm payment', 'woo-paypal-plus-brazil' );
 		$this->has_fields         = true;
 
 		// Load the form fields.
@@ -95,11 +95,11 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 						'remembered_cards'          => $this->get_customer_cards(),
 						'paypal_loading_bg_color'   => $this->filter_hex_color( $this->get_option( 'loading_bg_color' ) ),
 						'paypal_loading_bg_opacity' => $this->filter_opacity( $this->get_option( 'loading_bg_opacity' ) ),
-						'paypal_loading_message'    => __( 'Loading PayPal...', 'paypal-plus-brazil-for-woocommerce' ),
-						'paypal_plus_not_available' => __( 'PayPal Plus is not active for this PayPal account. Please contact us and try another payment method.', 'paypal-plus-brazil-for-woocommerce' ),
-						'check_entry'               => __( 'Please fill all required fields.', 'paypal-plus-brazil-for-woocommerce' ),
-						'unknown_error'             => __( 'Unknown error. Please contact us and try another payment method.', 'paypal-plus-brazil-for-woocommerce' ),
-						'unknown_error_json'        => __( 'Unknown error in PayPal response. Please contact us and try another payment method.', 'paypal-plus-brazil-for-woocommerce' ),
+						'paypal_loading_message'    => __( 'Loading PayPal...', 'woo-paypal-plus-brazil' ),
+						'paypal_plus_not_available' => __( 'PayPal Plus is not active for this PayPal account. Please contact us and try another payment method.', 'woo-paypal-plus-brazil' ),
+						'check_entry'               => __( 'Please fill all required fields.', 'woo-paypal-plus-brazil' ),
+						'unknown_error'             => __( 'Unknown error. Please contact us and try another payment method.', 'woo-paypal-plus-brazil' ),
+						'unknown_error_json'        => __( 'Unknown error in PayPal response. Please contact us and try another payment method.', 'woo-paypal-plus-brazil' ),
 					)
 				);
 			}
@@ -113,7 +113,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 */
 	protected function get_log_view() {
 		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '2.2', '>=' ) ) {
-			return '<a href="' . esc_url( admin_url( 'admin.php?page=wc-status&tab=logs&log_file=' . esc_attr( $this->id ) . '-' . sanitize_file_name( wp_hash( $this->id ) ) . '.log' ) ) . '">' . __( 'System Status &gt; Logs', 'paypal-plus-brazil-for-woocommerce' ) . '</a>';
+			return '<a href="' . esc_url( admin_url( 'admin.php?page=wc-status&tab=logs&log_file=' . esc_attr( $this->id ) . '-' . sanitize_file_name( wp_hash( $this->id ) ) . '.log' ) ) . '">' . __( 'System Status &gt; Logs', 'woo-paypal-plus-brazil' ) . '</a>';
 		}
 
 		return '<code>woocommerce/logs/' . esc_attr( $this->id ) . '-' . sanitize_file_name( wp_hash( $this->id ) ) . '.txt</code>';
@@ -125,78 +125,78 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled'               => array(
-				'title'   => __( 'Enable/Disable', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'   => __( 'Enable/Disable', 'woo-paypal-plus-brazil' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable PayPal Plus Brazil', 'paypal-plus-brazil-for-woocommerce' ),
+				'label'   => __( 'Enable PayPal Plus Brazil', 'woo-paypal-plus-brazil' ),
 				'default' => 'yes',
 			),
 			'title'                 => array(
-				'title'       => __( 'Title', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Title', 'woo-paypal-plus-brazil' ),
 				'type'        => 'text',
-				'description' => __( 'This controls the title which the user sees during checkout.', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'This controls the title which the user sees during checkout.', 'woo-paypal-plus-brazil' ),
 				'desc_tip'    => true,
-				'default'     => __( 'PayPal Plus', 'paypal-plus-brazil-for-woocommerce' ),
+				'default'     => __( 'PayPal Plus', 'woo-paypal-plus-brazil' ),
 			),
 			'description'           => array(
-				'title'       => __( 'Description', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Description', 'woo-paypal-plus-brazil' ),
 				'type'        => 'textarea',
-				'description' => __( 'This controls the description which the user sees during checkout.', 'paypal-plus-brazil-for-woocommerce' ),
-				'default'     => __( 'Pay via PayPal Plus', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'This controls the description which the user sees during checkout.', 'woo-paypal-plus-brazil' ),
+				'default'     => __( 'Pay via PayPal Plus', 'woo-paypal-plus-brazil' ),
 			),
 			'sandbox'               => array(
-				'title'       => __( 'PayPal Plus Sandbox', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'PayPal Plus Sandbox', 'woo-paypal-plus-brazil' ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Enable PayPal Plus Sandbox', 'paypal-plus-brazil-for-woocommerce' ),
+				'label'       => __( 'Enable PayPal Plus Sandbox', 'woo-paypal-plus-brazil' ),
 				'desc_tip'    => true,
 				'default'     => 'no',
-				'description' => __( 'PayPal Plus Sandbox can be used to test the payments.', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'PayPal Plus Sandbox can be used to test the payments.', 'woo-paypal-plus-brazil' ),
 			),
 			'client_id'             => array(
-				'title'       => __( 'PayPal Plus Client ID', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'PayPal Plus Client ID', 'woo-paypal-plus-brazil' ),
 				'type'        => 'text',
-				'description' => __( 'Please enter your PayPal Plus client ID.', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'Please enter your PayPal Plus client ID.', 'woo-paypal-plus-brazil' ),
 				'default'     => '',
 			),
 			'client_secret'         => array(
-				'title'       => __( 'PayPal Plus Client Secret', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'PayPal Plus Client Secret', 'woo-paypal-plus-brazil' ),
 				'type'        => 'text',
-				'description' => __( 'Please enter your PayPal Plus Client Secret.', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'Please enter your PayPal Plus Client Secret.', 'woo-paypal-plus-brazil' ),
 				'default'     => '',
 			),
 			'experience_profile_id' => array(
-				'title'       => __( 'PayPal Plus Experience Profile ID', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'PayPal Plus Experience Profile ID', 'woo-paypal-plus-brazil' ),
 				'type'        => 'text',
-				'description' => __( "Please enter your PayPal Plus Experience Profile ID. Leave empty if you don't have, the API will get one.", 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( "Please enter your PayPal Plus Experience Profile ID. Leave empty if you don't have, the API will get one.", 'woo-paypal-plus-brazil' ),
 				'default'     => '',
 			),
 			'design'                => array(
-				'title'       => __( 'Design', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Design', 'woo-paypal-plus-brazil' ),
 				'type'        => 'title',
 				'description' => '',
 			),
 			'loading_bg_color'      => array(
-				'title'       => __( 'Loading background color', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Loading background color', 'woo-paypal-plus-brazil' ),
 				'type'        => 'text',
-				'description' => __( 'Please enter hex color to loading background. Eg.: #CCCCCC', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'Please enter hex color to loading background. Eg.: #CCCCCC', 'woo-paypal-plus-brazil' ),
 				'default'     => '#CCCCCC',
 			),
 			'loading_bg_opacity'    => array(
-				'title'       => __( 'Loading background opacity', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Loading background opacity', 'woo-paypal-plus-brazil' ),
 				'type'        => 'text',
-				'description' => __( 'Please enter a percentage value to background opacity. Eg.: 50%.', 'paypal-plus-brazil-for-woocommerce' ),
+				'description' => __( 'Please enter a percentage value to background opacity. Eg.: 50%.', 'woo-paypal-plus-brazil' ),
 				'default'     => '60',
 			),
 			'testing'               => array(
-				'title'       => __( 'Gateway Testing', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Gateway Testing', 'woo-paypal-plus-brazil' ),
 				'type'        => 'title',
 				'description' => '',
 			),
 			'debug'                 => array(
-				'title'       => __( 'Debug Log', 'paypal-plus-brazil-for-woocommerce' ),
+				'title'       => __( 'Debug Log', 'woo-paypal-plus-brazil' ),
 				'type'        => 'checkbox',
-				'label'       => __( 'Enable logging', 'paypal-plus-brazil-for-woocommerce' ),
+				'label'       => __( 'Enable logging', 'woo-paypal-plus-brazil' ),
 				'default'     => 'no',
-				'description' => sprintf( __( 'Log PayPal Plus Brazil events, such as API requests, inside %s', 'paypal-plus-brazil-for-woocommerce' ), $this->get_log_view() ),
+				'description' => sprintf( __( 'Log PayPal Plus Brazil events, such as API requests, inside %s', 'woo-paypal-plus-brazil' ), $this->get_log_view() ),
 			),
 		);
 	}
@@ -267,7 +267,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 
 		// Check first if is missing data.
 		if ( empty( $_POST['paypal-plus-brazil-rememberedcards'] ) || empty( $_POST['paypal-plus-brazil-payerid'] ) || empty( $_POST['paypal-plus-brazil-payment-id'] ) ) {
-			$order->update_status( 'failed', __( 'Missing PayPal payment data.', 'paypal-plus-brazil-for-woocommerce' ) );
+			$order->update_status( 'failed', __( 'Missing PayPal payment data.', 'woo-paypal-plus-brazil' ) );
 		} else {
 			$payment_id    = $_POST['paypal-plus-brazil-payment-id'];
 			$remembercards = $_POST['paypal-plus-brazil-rememberedcards'];
@@ -277,10 +277,10 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 			// Check if success.
 			if ( $execute ) {
 				$result['result'] = 'success';
-				$order->update_status( 'processing', __( 'Payment received and confirmed by PayPal.', 'paypal-plus-brazil-for-woocommerce' ) );
+				$order->update_status( 'processing', __( 'Payment received and confirmed by PayPal.', 'woo-paypal-plus-brazil' ) );
 				$order->payment_complete();
 			} else {
-				$order->update_status( 'failed', __( 'Could not execute the payment.', 'paypal-plus-brazil-for-woocommerce' ) );
+				$order->update_status( 'failed', __( 'Could not execute the payment.', 'woo-paypal-plus-brazil' ) );
 			}
 		}
 

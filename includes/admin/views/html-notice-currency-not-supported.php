@@ -8,5 +8,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="error inline">
-	<p><strong><?php _e( 'PayPal Plus Brazil Disabled', 'paypal-plus-brazil-for-woocommerce' ); ?></strong>: <?php printf( __( 'Currency <code>%s</code> is not supported. Works only with Brazilian Real.', 'paypal-plus-brazil-for-woocommerce' ), get_woocommerce_currency() ); ?></p>
+	<p><strong><?php _e( 'PayPal Plus Brazil Disabled', 'woo-paypal-plus-brazil' ); ?></strong>: <?php printf( __( 'Currency <code>%s</code> is not supported. Works only with Brazilian Real.', 'woo-paypal-plus-brazil' ), get_woocommerce_currency() ); ?></p>
 </div>

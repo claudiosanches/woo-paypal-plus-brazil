@@ -26,19 +26,19 @@ Este plugin funciona integrado com o [WooCommerce Extra Checkout Fields for Braz
 
 = Instalação =
 
-Confira o nosso guia de instalação e configuração do PayPal na aba [Installation](http://wordpress.org/plugins/paypal-plus-brazil-for-woocommerce/installation/).
+Confira o nosso guia de instalação e configuração do PayPal na aba [Installation](http://wordpress.org/plugins/woo-paypal-plus-brazil/installation/).
 
 = Dúvidas? =
 
 Você pode esclarecer suas dúvidas usando:
 
-* A nossa sessão de [FAQ](http://wordpress.org/plugins/paypal-plus-brazil-for-woocommerce/faq/).
-* Criando um tópico no [fórum de ajuda do WordPress](http://wordpress.org/support/plugin/paypal-plus-brazil-for-woocommerce).
-* Criando um tópico no [fórum do Github](https://github.com/eliasjnior/paypal-plus-brazil-for-woocommerce/issues).
+* A nossa sessão de [FAQ](http://wordpress.org/plugins/woo-paypal-plus-brazil/faq/).
+* Criando um tópico no [fórum de ajuda do WordPress](http://wordpress.org/support/plugin/woo-paypal-plus-brazil).
+* Criando um tópico no [fórum do Github](https://github.com/eliasjnior/woo-paypal-plus-brazil/issues).
 
 = Colaborar =
 
-Você pode contribuir com código-fonte em nossa página no [GitHub](https://github.com/eliasjnior/paypal-plus-brazil-for-woocommerce).
+Você pode contribuir com código-fonte em nossa página no [GitHub](https://github.com/eliasjnior/woo-paypal-plus-brazil).
 
 == Installation ==
 
@@ -95,11 +95,11 @@ Sim, devido a análise de risco do PayPal e a necessidade para criar os endereç
 = Problemas com a integração? =
 
 Primeiro de tudo ative a opção **Log de depuração** e tente realizar o pagamento novamente.
-Feito isso copie o conteúdo do log e salve usando o [pastebin.com](http://pastebin.com) ou o [gist.github.com](http://gist.github.com), depois basta abrir um tópico de suporte [aqui](http://wordpress.org/support/plugin/paypal-plus-brazil-for-woocommerce).
+Feito isso copie o conteúdo do log e salve usando o [pastebin.com](http://pastebin.com) ou o [gist.github.com](http://gist.github.com), depois basta abrir um tópico de suporte [aqui](http://wordpress.org/support/plugin/woo-paypal-plus-brazil).
 
 = Mais dúvidas relacionadas ao funcionamento do plugin? =
 
-Entre em contato [clicando aqui](http://wordpress.org/support/plugin/paypal-plus-brazil-for-woocommerce).
+Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-plus-brazil).
 
 == Screenshots ==
 

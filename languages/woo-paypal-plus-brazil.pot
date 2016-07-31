@@ -1,11 +1,11 @@
 # Copyright (C) 2016 Elias Júnior
-# This file is distributed under the same license as the PayPal Plus Brazil for WooCommerce package.
+# This file is distributed under the same license as the Woo PayPal Plus Brazil package.
 msgid ""
 msgstr ""
-"Project-Id-Version: PayPal Plus Brazil for WooCommerce 1.0.0\n"
+"Project-Id-Version: Woo PayPal Plus Brazil 1.0.0\n"
 "Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/paypal-plus-brazil-for-woocommerce\n"
-"POT-Creation-Date: 2016-07-31 06:10:35+00:00\n"
+"https://wordpress.org/support/plugin/woo-paypal-plus-brazil\n"
+"POT-Creation-Date: 2016-07-31 06:17:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,9 @@ msgid ""
 "WordPress.org. Thank you in advance!"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
+#: includes/admin/views/html-admin-help-message.php:10
+#: includes/admin/views/html-notice-missing-ecfb.php:16
+#: includes/admin/views/html-notice-missing-woocommerce.php:16
 msgid "PayPal Plus Brazil for WooCommerce"
 msgstr ""
 
@@ -238,10 +240,6 @@ msgstr ""
 msgid "Could not execute the payment."
 msgstr ""
 
-#: paypal-plus-brazil-for-woocommerce.php:105
-msgid "Settings"
-msgstr ""
-
 #: templates/checkout-form.php:20
 msgid "Some error trying to generate payment field. Please refresh the page."
 msgstr ""
@@ -258,8 +256,16 @@ msgstr ""
 msgid "in case you already filled everything."
 msgstr ""
 
+#: woo-paypal-plus-brazil.php:105
+msgid "Settings"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Woo PayPal Plus Brazil"
+msgstr ""
+
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/eliasjnior/paypal-plus-brazil-for-woocommerce/"
+msgid "https://github.com/eliasjnior/woo-paypal-plus-brazil/"
 msgstr ""
 
 #. Description of the plugin/theme
