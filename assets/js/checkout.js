@@ -23,6 +23,10 @@ jQuery( function ( $ ) {
 			this.$checkout_form.on( 'change', '#shipping_first_name, #shipping_last_name, #shipping_address, #shipping_number, #shipping_address2, #shipping_neighborhood, #shipping_city, #shipping_state, #shipping_country', this.trigger_update_checkout );
 			this.$checkout_form.on( 'click', '#place_order', this.openCheckout );
 			this.$order_review.on( 'submit', this.openCheckout );
+			// Check if it's order pay, so trigger checkout update.
+			if ( wc_ppb_params.order_id !== '' ) {
+				$( document.body ).trigger( 'updated_checkout' );
+			}
 		},
 
 		// When update checkout start.
@@ -134,7 +138,17 @@ jQuery( function ( $ ) {
 		// Finish submitting form.
 		finish_submit_form: function () {
 			ppb_checkout.form_confirmed = true;
-			ppb_checkout.$checkout_form.submit();
+			if ( wc_ppb_params.order_id !== '' ) {
+				ppb_checkout.$order_review.block( {
+					message: null,
+					overlayCSS: {
+						background: '#fff',
+						opacity: 0.6
+					}
+				} ).submit();
+			} else {
+				ppb_checkout.$checkout_form.submit();
+			}
 		},
 
 		// Reload iframe.

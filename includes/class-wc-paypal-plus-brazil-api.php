@@ -165,9 +165,12 @@ class WC_PayPal_Plus_Brazil_API {
 	 * @return bool|array
 	 */
 	public function do_payment_request( $user_info ) {
-		$cart = WC()->cart;
-		$url  = $this->get_payment_url() . '/payment';
-		$data = array(
+		$order_id = get_query_var( 'order-pay' );
+		$order    = $order_id ? wc_get_order( $order_id ) : false;
+		$cart     = WC()->cart;
+		$customer = WC()->customer;
+		$url      = $this->get_payment_url() . '/payment';
+		$data     = array(
 			'intent'                => 'sale',
 			'payer'                 => array(
 				'payment_method' => 'paypal',
@@ -177,15 +180,7 @@ class WC_PayPal_Plus_Brazil_API {
 				array(
 					'amount'          => array(
 						'currency' => 'BRL',
-						'total'    => $this->money_format( $cart->cart_contents_total ),
-						'details'  => array(
-							'shipping'          => $this->money_format( $cart->shipping_total ),
-							'subtotal'          => $this->money_format( $cart->subtotal ),
-							'shipping_discount' => $this->money_format( 0 ),
-							'insurance'         => $this->money_format( 0 ),
-							'handling_fee'      => $this->money_format( $cart->fee_total ),
-							'tax'               => $this->money_format( $cart->tax_total ),
-						),
+						'total'    => $this->money_format( $order ? $order->get_total() : $cart->cart_contents_total ),
 					),
 					'payment_options' => array(
 						'allowed_payment_method' => 'IMMEDIATE_PAY',
@@ -195,12 +190,11 @@ class WC_PayPal_Plus_Brazil_API {
 							'recipient_name' => $user_info['first_name'] . ' ' . $user_info['last_name'],
 							'line1'          => $user_info['shipping_address'],
 							'line2'          => $user_info['shipping_address_2'],
-							'city'           => WC()->customer->get_shipping_city(),
-							'country_code'   => WC()->customer->get_shipping_country(),
-							'postal_code'    => WC()->customer->get_shipping_postcode(),
-							'state'          => WC()->customer->get_shipping_state(),
+							'city'           => $order ? $order->shipping_city : $customer->get_shipping_city(),
+							'country_code'   => $order ? $order->shipping_country : $customer->get_shipping_country(),
+							'postal_code'    => $order ? $order->shipping_postcode : $customer->get_shipping_postcode(),
+							'state'          => $order ? $order->shipping_state : $customer->get_shipping_state(),
 						),
-						'items'            => array(),
 					),
 				),
 			),
@@ -209,15 +203,7 @@ class WC_PayPal_Plus_Brazil_API {
 				'cancel_url' => home_url(),
 			),
 		);
-		foreach ( $cart->get_cart() as $item ) {
-			$data['transactions'][0]['item_list']['items'][] = array(
-				'name'     => $item['data']->post->post_title,
-				'sku'      => $item['product_id'],
-				'price'    => $this->money_format( $item['line_total'] / $item['quantity'] ),
-				'currency' => 'BRL',
-				'quantity' => $item['quantity'],
-			);
-		}
+
 		$response = $this->do_request_bearer( $url, 'POST', $data );
 
 		$this->gateway->log( 'Requesting to ' . $url . ': ' . print_r( $data, true ) );

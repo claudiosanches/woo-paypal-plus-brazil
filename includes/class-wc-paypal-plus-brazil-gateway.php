@@ -78,7 +78,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 * Checkout scripts.
 	 */
 	public function checkout_scripts() {
-		if ( is_checkout() && $this->is_available() ) {
+		if ( ( is_checkout() && $this->is_available() ) || get_query_var( 'order-pay' ) ) {
 			if ( ! get_query_var( 'order-received' ) ) {
 				$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -91,6 +91,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 					'wc_ppb_params',
 					array(
 						'mode'                      => 'yes' === $this->sandbox ? 'sandbox' : 'live',
+						'order_id'                  => get_query_var( 'order-pay' ),
 						'remembered_cards'          => $this->get_customer_cards(),
 						'paypal_loading_bg_color'   => $this->filter_hex_color( $this->get_option( 'loading_bg_color' ) ),
 						'paypal_loading_bg_opacity' => $this->filter_opacity( $this->get_option( 'loading_bg_opacity' ) ),
@@ -246,6 +247,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 			'api'        => $this->api,
 			'gateway'    => $this,
 			'cart_total' => $cart_total,
+			'order_id'   => get_query_var( 'order-pay' ),
 		), 'woocommerce/paypal-plus-brazil/', WC_PayPay_Plus_Brazil::get_templates_path() );
 	}
 
@@ -265,7 +267,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 
 		// Check first if is missing data.
 		if ( empty( $_POST['paypal-plus-brazil-rememberedcards'] ) || empty( $_POST['paypal-plus-brazil-payerid'] ) || empty( $_POST['paypal-plus-brazil-payment-id'] ) ) {
-			$order->update_status( 'cancelled', __( 'Missing PayPal payment data.', 'paypal-plus-brazil-for-woocommerce' ) );
+			$order->update_status( 'failed', __( 'Missing PayPal payment data.', 'paypal-plus-brazil-for-woocommerce' ) );
 		} else {
 			$payment_id    = $_POST['paypal-plus-brazil-payment-id'];
 			$remembercards = $_POST['paypal-plus-brazil-rememberedcards'];
@@ -276,8 +278,9 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 			if ( $execute ) {
 				$result['result'] = 'success';
 				$order->update_status( 'processing', __( 'Payment received and confirmed by PayPal.', 'paypal-plus-brazil-for-woocommerce' ) );
+				$order->payment_complete();
 			} else {
-				$order->update_status( 'cancelled', __( 'Could not execute the payment.', 'paypal-plus-brazil-for-woocommerce' ) );
+				$order->update_status( 'failed', __( 'Could not execute the payment.', 'paypal-plus-brazil-for-woocommerce' ) );
 			}
 		}
 
@@ -406,8 +409,39 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 * Get customer info.
 	 * @return array
 	 */
-	public function get_customer_info() {
-		$customer_info = WC()->session->get( 'paypal_plus_customer_info' );
+	public function get_customer_info( $order_id = false ) {
+		if ( $order_id ) {
+			$order         = wc_get_order( $order_id );
+			$customer_info = array(
+				'billing_first_name'  => $order->billing_first_name,
+				'billing_last_name'   => $order->billing_last_name,
+				'billing_email'       => $order->billing_email,
+				'billing_person_type' => '',
+				'billing_person_id'   => '',
+				'shipping_address'    => $order->shipping_address_1 . ', ' . get_post_meta( $order->id, '_shipping_number', true ),
+				'shipping_address_2'  => get_post_meta( $order->id, '_shipping_neighborhood', true ),
+			);
+
+			if ( $order->shipping_address_2 ) {
+				$customer_info['shipping_address'] .= ', ' . $order->shipping_address_2;
+			}
+
+			if ( $person_type = get_post_meta( $order->id, '_billing_persontype', true ) ) {
+				if ( $person_type === '1' ) {
+					$customer_info['billing_person_type'] = 'BR_CPF';
+				} else if ( $person_type === '2' ) {
+					$customer_info['billing_person_type'] = 'BR_CNPJ';
+				}
+			}
+
+			if ( $customer_info['billing_person_type'] === 'BR_CPF' ) {
+				$customer_info['billing_person_id'] = get_post_meta( $order->id, '_billing_cpf', true );
+			} else if ( $customer_info['billing_person_type'] === 'BR_CNPJ' ) {
+				$customer_info['billing_person_id'] = get_post_meta( $order->id, '_billing_cnpj', true );
+			}
+		} else {
+			$customer_info = WC()->session->get( 'paypal_plus_customer_info' );
+		}
 
 		return $customer_info;
 	}
@@ -431,8 +465,8 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 *
 	 * @return string
 	 */
-	public function get_customer_info_json_specialchars() {
-		$customer_info = $this->get_customer_info();
+	public function get_customer_info_json_specialchars( $order_id = false ) {
+		$customer_info = $this->get_customer_info( $order_id );
 
 		return htmlspecialchars( json_encode( $customer_info ) );
 	}
@@ -442,8 +476,8 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 *
 	 * @return bool
 	 */
-	public function is_valid_customer_info() {
-		$customer_info = $this->get_customer_info();
+	public function is_valid_customer_info( $order_id = false ) {
+		$customer_info = $this->get_customer_info( $order_id );
 
 		return $this->validate_user_fields( $customer_info );
 	}
