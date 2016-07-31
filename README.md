@@ -1,4 +1,4 @@
-# Plugin Name #
+# Woo PayPal Plus Brazil #
 **Contributors:** eliasjnior-1  
 **Donate link:** http://eliasjrweb.com/donate/  
 **Tags:** paypal, plus, woocommerce, payment, transaction, credit card  
