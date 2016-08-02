@@ -277,7 +277,6 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 			// Check if success.
 			if ( $execute ) {
 				$result['result'] = 'success';
-				$order->update_status( 'processing', __( 'Payment received and confirmed by PayPal.', 'woo-paypal-plus-brazil' ) );
 				$order->payment_complete();
 			} else {
 				$order->update_status( 'failed', __( 'Could not execute the payment.', 'woo-paypal-plus-brazil' ) );
